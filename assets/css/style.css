@@ -1,0 +1,60 @@
+.fondo {
+    background-color: #00a2ff;
+}
+
+.dock-wrapper {
+    min-width: 100px;
+    max-width: 40vw;
+    margin-inline: auto;
+}
+.dock {
+    --item-width: 40px;
+    --dock-padding: 1em;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    max-height: calc(var(--item-width) + var(--dock-padding) * 2);
+    padding: var(--dock-padding);
+    background-color: hsla(0, 24%, 87%, 0.164);
+    border: 4px solid hsl(0, 0%, 59%);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+.dock li {
+    list-style: none;
+    width: var(--item-width);
+    aspect-ratio: 1;
+
+    border-radius: 100vmax;
+    cursor: pointer;
+}
+.dock li,
+.dock img {
+    transition-timing-function: ease-out;
+    transition-duration: 300ms;
+}
+.dock li{
+    transition-property: width;
+}
+.dock img {
+    transition-property: translate;
+}
+
+.dock li:hover{
+    width: calc(var(--item-width) * 1.85);
+}
+.dock li:hover img {
+    translate: 0 -45%;
+}
+
+.dock li:hover + li,
+.dock li:has(+ li:hover){
+    width: calc(var(--item-width)* 1.55);
+}
+.dock li:hover + li img,
+.dock li:has(+ li:hover) img {
+    translate: 0 -15%;
+}
